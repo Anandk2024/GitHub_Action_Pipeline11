@@ -11,5 +11,5 @@ COPY target/app.jar app.jar
 CMD ["java", "-jar", "app.jar"]
 
 # Optionally expose a port (if your application serves HTTP)
-EXPOSE 5000
+EXPOSE 6000
 
