@@ -22,7 +22,7 @@ jobs:
       run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag priya/Docker-image:${TIMESTAMP}
+      run: docker build . --file Dockerfile --tag priyarrana/Docker-image:${TIMESTAMP}
 
     - name: Push the Docker image
-      run: docker push priya/Docker-image:${TIMESTAMP}
+      run: docker push priyarrana/Docker-image:${TIMESTAMP}
