@@ -1,0 +1,15 @@
+name: Notify Microsoft Teams on Deployment
+
+on:
+  deployment_status:
+    types: [success]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Deployment Notification to Teams
+        uses: gabriel-vasile/ms-teams-notification-action@v1
+        with:
+          webhook-url: ${{ secrets.M_WEBHOOK }}
+          message: 'Build is successful!'
