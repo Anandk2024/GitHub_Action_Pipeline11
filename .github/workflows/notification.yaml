@@ -1,8 +1,10 @@
-name: Notify Microsoft Teams on Deployment
+name: Notify
 
 on:
-  deployment_status:
-    types: [success]
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
 
 jobs:
   notify:
