@@ -26,3 +26,10 @@ jobs:
 
     - name: Push the Docker image
       run: docker push priyarrana/gitubaction:${TIMESTAMP}
+
+    - name: Notify Teams on success
+      if: success()  # Only run if previous steps were successful
+      run: |
+          curl -H 'Content-Type: application/json' -d '{
+            "text": "✅ Build and Push successful! Docker image pushed to Docker Hub."
+          }' ${{ secrets.M_WEBHOOK }}
