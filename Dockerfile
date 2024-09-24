@@ -11,5 +11,5 @@ COPY src/main/java/hello/app.jar app.jar
 CMD ["java", "-jar", "app.jar"]
 
 # Optionally expose a port (if your application serves HTTP)
-EXPOSE 4000
+EXPOSE 2000
 
