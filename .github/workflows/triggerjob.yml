@@ -1,5 +1,10 @@
-name: Scheduled Code Diff Check
+name: main
 
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 on:
   schedule:
     - cron: '0 0 * * *' 
@@ -33,23 +38,7 @@ jobs:
   trigger_job:
     runs-on: ubuntu-latest
     needs: check_diff
-    if: needs.check_diff.outputs.diff_found == 'true'
-
-    steps:
-      name: main
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-jobs:
-
-  build:
-
-    runs-on: ubuntu-latest
-
+    if: needs.check_diff.outputs.diff_found == 'true
     steps:
     - uses: actions/checkout@v4
 
@@ -71,5 +60,3 @@ jobs:
           curl -H 'Content-Type: application/json' -d '{
             "text": "✅ Build and Push successful! Docker image pushed to Docker Hub."
           }' ${{ secrets.M_WEBHOOK }}
-
-  
