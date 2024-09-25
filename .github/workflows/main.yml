@@ -8,9 +8,7 @@ on:
 on:
   schedule:
     - cron: '0 * * * *' 
-  jobs:
-  hourly_job:
-    runs-on: ubuntu-latest 
+    
  jobs:
   check_diff:
     runs-on: ubuntu-latest
