@@ -1,3 +1,4 @@
+
 name: main
 
 on:
@@ -5,36 +6,11 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
- jobs:
-  check_diff:
-    runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Fetch latest changes
-        run: |
-          git fetch origin master 
-
-      - name: Check for differences
-        id: check_diff
-        run: |
-          DIFF=$(git diff --name-only origin/master...HEAD)
-          echo "Changes detected: $DIFF"
-          if [[ -n "$DIFF" ]]; then
-            echo "::set-output name=changes::true"
-          else
-            echo "::set-output name=changes::false"
-          fi
-
-      - name: Take action if changes detected
-        if: steps.check_diff.outputs.changes == 'true'
-        run: |
-          echo "Running additional actions..."
-          # Add your action commands here
 jobs:
+
   build:
+
     runs-on: ubuntu-latest
 
     steps:
