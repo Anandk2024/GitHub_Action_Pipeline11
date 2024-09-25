@@ -8,7 +8,6 @@ on:
 on:
   schedule:
     - cron: '* * * * *' 
-
  jobs:
   check_diff:
     runs-on: ubuntu-latest
