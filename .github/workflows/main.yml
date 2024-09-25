@@ -18,17 +18,16 @@ jobs:
 
       - name: Set up Git
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "action@github.com"
+          git config --global priyanagora "github-actions"
 
       - name: Fetch latest changes
         run: |
-          git fetch origin main  # Adjust branch name as needed
+          git fetch origin master  # Adjust branch name as needed
 
       - name: Check for differences
         id: check_diff
         run: |
-          DIFF=$(git diff --name-only origin/main...HEAD)
+          DIFF=$(git diff --name-only origin/master...HEAD)
           echo "Changes detected: $DIFF"
           if [[ -n "$DIFF" ]]; then
             echo "::set-output name=changes::true"
