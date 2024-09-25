@@ -7,8 +7,7 @@ on:
     branches: [ "master" ]
 on:
   schedule:
-    - cron: '0 * * * *' 
-    
+    - cron: '0 * * * *'  
  jobs:
   check_diff:
     runs-on: ubuntu-latest
