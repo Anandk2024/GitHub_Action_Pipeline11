@@ -29,8 +29,10 @@ jobs:
       run: docker push priyarrana/gitubaction:${TIMESTAMP}
 
     - name: Notify Teams on success
-      if: success()  # Only run if previous steps were successful
-      run: |
-          curl -H 'Content-Type: application/json' -d '{
-            "text": "✅ Build and Push successful! Docker image pushed to Docker Hub."
-          }' ${{ secrets.key }}
+      if: success()  
+       uses: Github_Action_Pipeline/http-request-action@v1.2.0
+  with:
+    url: 'https://dedalusspa.webhook.office.com/webhookb2/58b4f548-89ad-48cd-9562-db1a28c238d6@9ffff5c3-bdfa-4a9d-b595-ff68329945ef/GitHubEnterprise/25d0fbab0a2c44ba812d46b8665b7a40/b0dc9817-c3d4-4574-b4cd-905ae67ccd4e'  # Your webhook URL
+    method: POST
+    headers: '{"Content-Type":"application/json"}'
+    body: '{"text": "A new push has been made to the repository!"}'
