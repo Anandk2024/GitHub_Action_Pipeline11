@@ -33,4 +33,4 @@ jobs:
       run: |
           curl -H 'Content-Type: application/json' -d '{
             "text": "✅ Build and Push successful! Docker image pushed to Docker Hub."
-          }' ${{ secrets.M_WEBHOOK }}
+          }' ${{ secrets.key }}
