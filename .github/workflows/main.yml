@@ -23,14 +23,14 @@ jobs:
       run: echo "TIMESTAMP=$(date +%s)" >> $GITHUB_ENV
 
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag priyarrana/gitubaction:${TIMESTAMP}
+      run: docker build . --file Dockerfile --tag anshukla94/dockertest2:${TIMESTAMP}
 
     - name: Push the Docker image
-      run: docker push priyarrana/gitubaction:${TIMESTAMP}
+      run: docker push anshukla94/dockertest2:${TIMESTAMP}
 
     - name: Notify Teams on success
       if: success()  # Only run if previous steps were successful
       run: |
           curl -H 'Content-Type: application/json' -d '{
             "text": "✅ Build and Push successful! Docker image pushed to Docker Hub."
-          }' ${{ secrets.M_WEBHOOK }}
+          }' ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
